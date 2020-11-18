@@ -1,5 +1,5 @@
 {% load static %}
-
+{% static "images" as baseUrl %}
 
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -293,9 +293,11 @@
             <h1>TOP RATED</h1>
             <p class="text-right"><a href="#">See all</a></p>
           </div>
+
+          {% for movie in  popular_movies %}
           <div class="movie">
-            <div class="movie-image"> <span class="play"><span class="name">The SHAWSHANK REDEMPTION</span></span> <a
-                href="#"><img src="{% static 'images/The_shawshank_redemption.jpg' %}" alt="" /></a> </div>
+            <div class="movie-image"> <span class="play"><span class="name">{{movie}}</span></span> <a
+                href="#"><img src="{% static 'images/The_godfather.jpg' %}" alt="" /></a> </div>
             <div class="rating">
               <p>RATING</p>
               <div class="stars">
@@ -303,7 +305,8 @@
               </div>
             </div>
           </div>
-          <div class="movie">
+          {% endfor %}
+          <!-- <div class="movie">
             <div class="movie-image"> <span class="play"><span class="name">GODFATHER</span></span> <a href="#"><img
                   src="{% static 'images/The_godfather.jpg' %}" alt="" /></a> </div>
             <div class="rating">
@@ -352,7 +355,7 @@
                 <div class="stars-in"> </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="cl">&nbsp;</div>
         </div>
 
