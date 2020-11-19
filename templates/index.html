@@ -15,150 +15,126 @@
 </head>
 
 <style>
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-  }
+body {font-family: Arial, Helvetica, sans-serif;}
 
-  /* Full-width input fields */
-  input[type=text],
-  input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
-  /* Set a style for all buttons */
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-  }
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
 
-  button:hover {
-    opacity: 0.8;
-  }
+button:hover {
+  opacity: 0.8;
+}
 
-  /* Extra styles for the cancel button */
-  .cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-  }
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
 
-  /* Center the image and position the close button */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-  }
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
 
-  img.avatar {
-    width: 40%;
-    border-radius: 50%;
-  }
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
 
-  .container {
-    padding: 16px;
-  }
+.container {
+  padding: 16px;
+}
 
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: relative; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
   span.psw {
-    float: right;
-    padding-top: 16px;
+     display: block;
+     float: none;
   }
-
-  /* The Modal (background) */
-  .modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-    padding-top: 60px;
+  .cancelbtn {
+     width: 100%;
   }
-
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto;
-    /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
-  }
-
-  /* The Close Button (x) */
-  .close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
-  }
-
-  /* Add Zoom Animation */
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-  }
-
-  @-webkit-keyframes animatezoom {
-    from {
-      -webkit-transform: scale(0)
-    }
-
-    to {
-      -webkit-transform: scale(1)
-    }
-  }
-
-  @keyframes animatezoom {
-    from {
-      transform: scale(0)
-    }
-
-    to {
-      transform: scale(1)
-    }
-  }
-
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-      display: block;
-      float: none;
-    }
-
-    .cancelbtn {
-      width: 100%;
-    }
-  }
+}
 </style>
 
 <body>
@@ -172,12 +148,13 @@
           <li><button><a class="active" href="#">HOME</a></button></li>
 
 
-          <li><button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
+          <li><button onclick="document.getElementById('id02').style.display='inline'"style="width:auto;">Login</button>
           </li>
 
           <div id="id02" class="modal">
 
-            <form class="modal-content animate" action="/action_page.php" method="post">
+            <form class="modal-content animate"  method="post">
+              {% csrf_token %}
               <div class="imgcontainer">
                 <span onclick="document.getElementById('id02').style.display='none'" class="close"
                   title="Close Modal">&times;</span>
@@ -217,10 +194,7 @@
             }
           </script>
 
-
-
-
-          <li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign
+          <li><button onclick="document.getElementById('id01').style.display='inline'" style="width:auto;">Sign
               Up</button></li>
 
           <div id="id01" class="modal">
@@ -273,9 +247,9 @@
       <div id="sub-navigation">
 
         <div id="search">
-          <form action="#" method="get" accept-charset="utf-8">
+          <form action="search_movie" method="get" accept-charset="utf-8">
             <label for="search-field">SEARCH</label>
-            <input type="text" name="search field" value="Enter search here" id="search-field"
+            <input type="text" name="search_field" placeholder="Enter search here" id="search-field"
               class="blink search-field" />
             <input type="submit" value="GO!" class="search-button" />
           </form>
@@ -284,20 +258,20 @@
     </div>
     <div id="main">
       <div id="content">
-
-
-
-
         <div class="box">
           <div class="head">
             <h1>TOP RATED</h1>
             <p class="text-right"><a href="#">See all</a></p>
           </div>
 
-          {% for movie in  popular_movies %}
+          {% for movie in movies %}
           <div class="movie">
-            <div class="movie-image"> <span class="play"><span class="name">{{movie}}</span></span> <a
-                href="#"><img src="{% static 'images/The_godfather.jpg' %}" alt="" /></a> </div>
+            <div class="movie-image"> <span class="play"><span class="name">{{ movie.name }}</span></span> 
+              <a href="#"><img src="{{baseUrl}}/{{movie.image}}" alt="" /></a> 
+            </div>
+              <div class="text-block">
+                <p>Text</p>
+              </div>
             <div class="rating">
               <p>RATING</p>
               <div class="stars">
@@ -306,57 +280,7 @@
             </div>
           </div>
           {% endfor %}
-          <!-- <div class="movie">
-            <div class="movie-image"> <span class="play"><span class="name">GODFATHER</span></span> <a href="#"><img
-                  src="{% static 'images/The_godfather.jpg' %}" alt="" /></a> </div>
-            <div class="rating">
-              <p>RATING</p>
-              <div class="stars">
-                <div class="stars-in"> </div>
-              </div>
-            </div>
-          </div>
-          <div class="movie">
-            <div class="movie-image"> <span class="play"><span class="name">DDLJ</span></span> <a href="#"><img
-                  src="{% static 'images/Dilwale_Dulhania_Le_Jayenge_poster.jpg' %}" alt="" /></a> </div>
-            <div class="rating">
-              <p>RATING</p>
-              <div class="stars">
-                <div class="stars-in"> </div>
-              </div>
-            </div>
-          </div>
-          <div class="movie">
-            <div class="movie-image"> <span class="play"><span class="name">THE DARK KNIGHT</span></span> <a
-                href="#"><img src="{% static 'images/The_dark_knight.jpg' %}" alt="" /></a> </div>
-            <div class="rating">
-              <p>RATING</p>
-              <div class="stars">
-                <div class="stars-in"> </div>
-              </div>
-            </div>
-          </div>
-          <div class="movie">
-            <div class="movie-image"> <span class="play"><span class="name">FIGHT CLUB</span></span> <a href="#"><img
-                  src="{% static 'images/Fight club.jpg' %}" alt="" /></a> </div>
-            <div class="rating">
-              <p>RATING</p>
-              <div class="stars">
-                <div class="stars-in"> </div>
-              </div>
-            </div>
-          </div>
-          <div class="movie last">
-            <div class="movie-image"> <span class="play"><span class="name">PULP FICTION &amp; DEMONS</span></span> <a
-                href="#"><img src="{% static 'images/Pulp_fiction.jpg' %}" alt="" /></a> </div>
-            <div class="rating">
-              <p>RATING</p>
-              <div class="stars">
-                <div class="stars-in"> </div>
-              </div>
-            </div>
-          </div> -->
-          <div class="cl">&nbsp;</div>
+      <div class="cl">&nbsp;</div>
         </div>
 
 
@@ -365,7 +289,38 @@
           <div style="clear:both;"></div>
         </div>
       </div>
-      <!-- END PAGE SOURCE -->
+
+      <footer>
+        <div class="row">
+        <div class="column">
+          <h2>Easy Access</h2>
+          <p id="tohover"><a href = "#">Top Rated</a></p>
+          <p id="tohover"><a onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Made for you</a></p>
+        </div>
+      
+        <div class="column">
+          <h2>Useful Links</h2>
+          <p id="tohover"><a href ="#">Home</a></p>
+          <p id="tohover"><a href = "{% url 'about' %}">About Us </p>
+          <p id="tohover"><a onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</a></p>
+          <p id="tohover"><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register</a></p>
+        </div>
+      
+        <div class="column">
+      
+          <h2>Phone   <i class="fa fa-phone" style="font-size:28px;color:red"></i><i class="fa fa-envelope" style="font-size:48px;color:red"></i></h2>
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-linkedin"></a>
+          <a href="#" class="fa fa-instagram"></a>
+          <p id="tohover">Subscribe Us!</p>
+      
+      <br>
+        </div>
+      </div>
+      <p>&#169;Copyright@2020 All rights reserved</p>
+    </footer>
+    <!-- END PAGE SOURCE -->
 </body>
 
 </html>

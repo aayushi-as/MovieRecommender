@@ -1,0 +1,312 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>MovieHunter</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+  <script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-func.js' %}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!--[if IE 6]><link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" /><![endif]-->
+</head>
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+
+<body>
+<!-- START PAGE SOURCE -->
+<div id="shell">
+  <div id="header">
+    <h1 id="logo"><a href="#">MovieHunter</a></h1>
+
+    <div id="navigation">
+      <ul>
+        <li><button><a class="active" href="index.html">HOME</a></button></li>
+
+
+        
+
+        <li><button><a href="about.html">ABOUT</a></button></li>
+        <li><button><a href="logout">LOGOUT</a></button></li>
+      </ul>
+    </div>
+    <div id="sub-navigation">
+
+      <div id="search">
+        <form action="#" method="get" accept-charset="utf-8">
+          <label for="search-field">SEARCH</label>
+          <input type="text" name="search field" value="Enter search here" id="search-field" class="blink search-field"  />
+          <input type="submit" value="GO!" class="search-button" />
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="main">
+    <div id="content">
+
+
+
+
+      <div class="box">
+        <div class="head">
+          <h1>MADE FOR YOU</h1>
+          <p class="text-right"><a href="#">See all</a></p>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">The SHAWSHANK REDEMPTION</span></span> <a href="#"><img src="{% static 'css/images/The shawshank redemption.jpg' %}" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">GODFATHER</span></span> <a href="#"><img src="{% static 'css/images/The godfather.jpg'%}" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">DDLJ</span></span> <a href="#"><img src="{% static 'css/images/Dilwale_Dulhania_Le_Jayenge_poster.jpg'%}" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">THE DARK KNIGHT</span></span> <a href="#"><img src="{% static 'css/images/The dark knight.jpg' %}" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">FIGHT CLUB</span></span> <a href="#"><img src="{% static 'css/images/Fight club.jpg'%}" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie last">
+          <div class="movie-image"> <span class="play"><span class="name">PULP FICTION &amp; DEMONS</span></span> <a href="#"><img src="{% static 'css/images/Pulp fiction.jpg'%}" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="cl">&nbsp;</div>
+      </div>
+
+
+      <!--<div class="box">
+        <div class="head">
+          <h1>TOP RATED</h1>
+          <p class="text-right"><a href="#">See all</a></p>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">The SHAWSHANK REDEMPTION</span></span> <a href="#"><img src="css/images/The shawshank redemption.jpg" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">GODFATHER</span></span> <a href="#"><img src="css/images/The godfather.jpg" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">DDLJ</span></span> <a href="#"><img src="css/images/Dilwale_Dulhania_Le_Jayenge_poster.jpg" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">THE DARK KNIGHT</span></span> <a href="#"><img src="css/images/The dark knight.jpg" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie">
+          <div class="movie-image"> <span class="play"><span class="name">FIGHT CLUB</span></span> <a href="#"><img src="css/images/Fight club.jpg" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="movie last">
+          <div class="movie-image"> <span class="play"><span class="name">PULP FICTION &amp; DEMONS</span></span> <a href="#"><img src="css/images/Pulp fiction.jpg" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+             </div>
+        </div>
+        <div class="cl">&nbsp;</div>
+      </div>-->
+
+
+  <div id="footer">
+    <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+    <div style="clear:both;"></div>
+  </div>
+</div>
+<!-- END PAGE SOURCE -->
+</body>
+</html>
