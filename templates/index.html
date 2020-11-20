@@ -11,14 +11,21 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
   <script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/jquery-func.js' %}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <!--[if IE 6]><link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" /><![endif]-->
 </head>
 
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+  body {font-family: Arial, Helvetica, sans-serif;
+  }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text],
+input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -72,8 +79,10 @@ span.psw {
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: relative; /* Stay in place */
+  display: none; 
+  /* Hidden by default */
+  position: fixed; 
+  /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
@@ -109,32 +118,105 @@ span.psw {
   cursor: pointer;
 }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
+  footer{
+   background-color:#e2d8d8;
+   text-align: center;
+   font-size:1.5em;
+   width: 100%;
+   position: relative;
 }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)}
-  to {-webkit-transform: scale(1)}
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px;
 }
 
-@keyframes animatezoom {
-  from {transform: scale(0)}
-  to {transform: scale(1)}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  width: 100%;
+
+}
+#tohover:hover{
+  background-color: #9BA8A8;
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
+/* Gliff icons*/
+
+
+.fa {
+  padding: 30px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+  /* Add Zoom Animation */
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
   }
-  .cancelbtn {
-     width: 100%;
+
+  @-webkit-keyframes animatezoom {
+    from {
+      -webkit-transform: scale(0)
+    }
+
+    to {
+      -webkit-transform: scale(1)
+    }
   }
-}
+
+  @keyframes animatezoom {
+    from {
+      transform: scale(0)
+    }
+
+    to {
+      transform: scale(1)
+    }
+  }
+
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+
+    .cancelbtn {
+      width: 100%;
+    }
+  }
+
 </style>
 
 <body>
@@ -146,14 +228,62 @@ span.psw {
       <div id="navigation">
         <ul>
           <li><button><a class="active" href="#">HOME</a></button></li>
+          <li><button><a href="{% url 'about' %}">ABOUT</a></button></li>
 
+          <li><button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
+         </li>
 
-          <li><button onclick="document.getElementById('id02').style.display='inline'"style="width:auto;">Login</button>
-          </li>
+          <li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign
+              Up</button></li>
 
+        </ul>
+      </div>
+
+      <div id="sub-navigation">
+
+        <div id="search">
+          <form action="search_movie" method="get" accept-charset="utf-8">
+            <label for="search-field">SEARCH</label>
+            <input type="text" name="search_field" placeholder="Enter search here" id="search-field"
+              class="blink search-field" />
+            <input type="submit" value="GO!" class="search-button" />
+          </form>
+        </div>
+      </div>
+
+          <!-- <div id="id02" class="modal">
+
+            <form class="modal-content animate" action="signin" method="post">
+              {% csrf_token %}
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('id02').style.display='none'" class="close"
+                  title="Close Modal">&times;</span>
+               
+              </div>
+
+              <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" >
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" >
+
+                <button type="submit">Login</button>
+                <label>
+                  <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+              </div>
+
+              <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                  class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+              </div>
+            </form>
+          </div> -->
           <div id="id02" class="modal">
 
-            <form class="modal-content animate"  method="post">
+            <form class="modal-content animate"  method="post" action="signin">
               {% csrf_token %}
               <div class="imgcontainer">
                 <span onclick="document.getElementById('id02').style.display='none'" class="close"
@@ -194,13 +324,11 @@ span.psw {
             }
           </script>
 
-          <li><button onclick="document.getElementById('id01').style.display='inline'" style="width:auto;">Sign
-              Up</button></li>
-
           <div id="id01" class="modal">
             <span onclick="document.getElementById('id01').style.display='none'" class="close"
               title="Close Modal">&times;</span>
-            <form class="modal-content" action="/action_page.php">
+            <form class="modal-content" method="get">
+          
               <div class="container">
                 <h1>Sign Up</h1>
                 <p>Please fill in this form to create an account.</p>
@@ -241,37 +369,21 @@ span.psw {
             }
           </script>
 
-          <li><button><a href="{% url 'about' %}">ABOUT</a></button></li>
-        </ul>
-      </div>
-      <div id="sub-navigation">
-
-        <div id="search">
-          <form action="search_movie" method="get" accept-charset="utf-8">
-            <label for="search-field">SEARCH</label>
-            <input type="text" name="search_field" placeholder="Enter search here" id="search-field"
-              class="blink search-field" />
-            <input type="submit" value="GO!" class="search-button" />
-          </form>
-        </div>
-      </div>
+        
+      
     </div>
     <div id="main">
       <div id="content">
         <div class="box">
           <div class="head">
-            <h1>TOP RATED</h1>
-            <p class="text-right"><a href="#">See all</a></p>
+            <h1 style="color: white;">TOP RATED</h1>
+            <p class="text-right"><a onclick="document.getElementById('id02').style.display='block'" style="width:auto;">See all</a></p>
           </div>
 
-          {% for movie in movies %}
+         {% for movie in movies %}
           <div class="movie">
-            <div class="movie-image"> <span class="play"><span class="name">{{ movie.name }}</span></span> 
-              <a href="#"><img src="{{baseUrl}}/{{movie.image}}" alt="" /></a> 
-            </div>
-              <div class="text-block">
-                <p>Text</p>
-              </div>
+            <div class="movie-image"> <span class="play"><span class="name">{{ movie.name }}</span></span> <a
+                href="#"><img src="{{baseUrl}}/{{movie.image}}" alt="" /></a> </div>
             <div class="rating">
               <p>RATING</p>
               <div class="stars">
@@ -280,13 +392,8 @@ span.psw {
             </div>
           </div>
           {% endfor %}
-      <div class="cl">&nbsp;</div>
-        </div>
-
-
-        <div id="footer">
-          <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
-          <div style="clear:both;"></div>
+         
+          <div class="cl">&nbsp;</div>
         </div>
       </div>
 
@@ -319,8 +426,9 @@ span.psw {
         </div>
       </div>
       <p>&#169;Copyright@2020 All rights reserved</p>
-    </footer>
-    <!-- END PAGE SOURCE -->
+          </footer>    
+
+      <!-- END PAGE SOURCE -->
 </body>
 
 </html>

@@ -64,7 +64,7 @@ a {
 }
 body {
 	font-family: Arial, Helvetica, sans-serif;
-  	background-color: black;
+  background-color: black;
 	font-size:12px;
 	line-height:1.3;
 	font-family:Arial, Helvetica, Sans-Serif;
@@ -229,6 +229,10 @@ h1#logo a {
 #main {
 	border-bottom:1px dashed #413e3e;
 }
+#content {
+}
+
+
 .box {
 	width:980px;
 	border-bottom:1px dashed #413e3e;
@@ -247,47 +251,82 @@ h1#logo a {
 	width:152px;
 	float:left;
 	padding-right:12px;
-	margin: 20px;
+	margin: 20px
 }
+
+.play {
+	position:absolute;
+	top:0;
+	left:0;
+	width:152px;
+	height:214px;
+	background:url('iimages/image-hover.png');
+	display:block;
+	z-index:5;
+	cursor:pointer;
+	display:none;
+}
+
 /* added this effect for after hovering */
 .box .movie:hover{
-	-moz-box-shadow: 0 0 10px #ccc;
-	-webkit-box-shadow: 0 0 10px #ccc;
-	box-shadow: 0 0 10px #ccc;
+      -moz-box-shadow: 0 0 10px #ccc;
+      -webkit-box-shadow: 0 0 10px #ccc;
+      box-shadow: 0 0 10px #ccc;
 }
 .movie-image {
 	float:left;
 	width:152px;
 	height:214px;
 	position:relative;
+
 }
-.movie-image img {
+
+
+.movie-image img{
 	width:152px;
 	height:214px;
 }
+
+
+/* removed content from here  of .movie-image a   */
+
 /* added these class .column .row and .first-txt  */
 
 .column {
-	float: left;
-	width: 33.33%;
-	padding: 5px;
-  }
-  .row::after {
-	content: "";
-	clear: both;
-	display: table;
-  }
-  
-  
-  
-  .first-txt {
-			  position: absolute;
-			  top: 17px;
-			  left: 10%;
-						  top:25%;
-						  font-size: 1.5em;
-						  color: Black;
-		  }
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+
+.first-txt {
+            position: absolute;
+            top: 17px;
+            left: 10%;
+						top:25%;
+						font-size: 1.5em;
+						color: Black;
+        }
+
+/*.play {
+	position:absolute;
+	top:0;
+	left:0;
+	width:152px;
+	height:214px;
+	background:url('iimages/image-hover.png');
+	display:block;
+	z-index:5;
+	cursor:pointer;
+	display:none;
+}
+*/
 .movie span.name {
 	font-weight:bold;
 	color:#fff;
@@ -296,6 +335,9 @@ h1#logo a {
 	padding-top:160px;
 	display:block;
 }
+
+
+
 .box .last {
 	padding:0;
 }
@@ -332,6 +374,11 @@ h1#logo a {
 	padding-left:12px;
 	float:right;
 }
+
+
+/* removed the unnecessary classes from here  */
+
+
 #footer {
 	padding:15px 0 0 0;
 	font-size:10px;
