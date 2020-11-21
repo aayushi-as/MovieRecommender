@@ -229,8 +229,6 @@ h1#logo a {
 #main {
 	border-bottom:1px dashed #413e3e;
 }
-#content {
-}
 
 
 .box {
@@ -260,7 +258,7 @@ h1#logo a {
 	left:0;
 	width:152px;
 	height:214px;
-	background:url('iimages/image-hover.png');
+	background:url('images/image-hover.png');
 	display:block;
 	z-index:5;
 	cursor:pointer;
@@ -314,19 +312,6 @@ h1#logo a {
 						color: Black;
         }
 
-/*.play {
-	position:absolute;
-	top:0;
-	left:0;
-	width:152px;
-	height:214px;
-	background:url('iimages/image-hover.png');
-	display:block;
-	z-index:5;
-	cursor:pointer;
-	display:none;
-}
-*/
 .movie span.name {
 	font-weight:bold;
 	color:#fff;

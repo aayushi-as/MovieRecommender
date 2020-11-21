@@ -4,3 +4,7 @@ from django.db import models
 class popularMovies:
     name: str
     image: str
+
+class CollaborativeMovies:
+    name: str
+    rating: float

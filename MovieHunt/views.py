@@ -3,12 +3,12 @@ from django.http import HttpResponse
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import joblib
-
 from .models import popularMovies
-
-new_set = list()
+import pandas as pd
+from .models import CollaborativeMovies
 
 movie_attributes = joblib.load('contentBased_model.sav')
+similarity_df = joblib.load('collaborative_model.sav')
 
 # Create your views here.
 def home(request):
@@ -50,12 +50,12 @@ def search_movie(request):
 	search_field = request.GET["search_field"]
 	recommendation = recommend(search_field)
 	recommendation = recommendation[:10]
-	movie_posters = ["The_shawshank_redemption.jpg"]
-	return render(request, 'search.html',{"recommendation":recommendation, "movie_posters":movie_posters})
+	print(recommendation)
+	return render(request, 'search.html',{"recommendation":recommendation})
 
 
 def recommend(movie_user_likes):
-    
+    new_set = list()
     features = ['genres','overview','tagline']
     
     #create a column in df which combines all selected feature
@@ -79,21 +79,66 @@ def recommend(movie_user_likes):
         new_set.append(get_title_from_index(movie[0]))
         i=i+1
         if(i>11):
-            return list(new_set)	
+            return new_set
 
 Users = {"1":"movie","2":"movie","3":"movie","4":"movie"}
 def signin(request):
-    
-    username = request.POST["uname"]
-    password = request.POST["psw"]
+    uid = request.GET["uname"]
+    password = request.GET["psw"]
     for key,value in Users.items():
-        if key == username:
+        if key == uid:
             if value == password:
-                return render(request,'signin.html')
+                rated_movies = []
+                rated_results = []
+                movie_ratings = pd.read_csv("ratings_small.csv")
+                title_data = pd.read_csv("title_data.csv")
+
+                movie_ratings = movie_ratings.drop(["timestamp"], axis=1)
+                movie_ratings = movie_ratings.loc[movie_ratings['user_id'] == 1]
+
+                ids = movie_ratings['movie_id'].to_list()
+                ratings = movie_ratings['rating'].to_list()
+
+                title_data = title_data.fillna(0, axis=1)
+                title_data['movie_id'] = title_data['movie_id'].astype(int)
+
+                
+                for i in ids:
+                    movie = title_data.loc[title_data.movie_id.eq(i), 'title'].item()
+                    rated_movies.append(movie)
+
+                for i in range(5):
+                    obj = CollaborativeMovies()
+                    obj.name = rated_movies[i]
+                    obj.rating = ratings[i]
+                    rated_results.append(obj)
+
+                similar_movies = pd.DataFrame()
+
+                # for movie, rating in rated_movies:
+                for i in range(5):
+                    similar_movies = similar_movies.append(get_similar_item(rated_movies[i], ratings[i]), ignore_index = True)
+
+                similar_movies = similar_movies.sum().sort_values(ascending=False)
+                similar_movies = similar_movies.to_frame()
+                similar_movies['title'] = similar_movies.index
+                List = similar_movies['title'].tolist()
+
+                collaborative_results = []
+
+                for movie in List:
+                    if movie not in rated_movies:
+                        collaborative_results.append(movie)
+                        
+                return render(request,'signin.html',{"rated_results": rated_results, "UserId": uid, "collaborative_results": collaborative_results})
 
         else:
             return render(request,'index.html')
-
+            
+def get_similar_item(title, rating):
+    similarity_score = similarity_df[title]*(rating - 2.5)
+    similarity_score = similarity_score.sort_values(ascending = False)
+    return similarity_score.head(5)
                 
 def logout(request):
     return redirect('/')
